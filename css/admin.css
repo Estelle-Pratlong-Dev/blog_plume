@@ -1,0 +1,189 @@
+/***************************************************************
+Atelier de publication : navigation et formulaires
+***************************************************************/
+.admin-header {
+    padding-block: 1.2rem;
+    color: var(--page-background);
+    background: var(--footer-background);
+}
+
+.admin-header > div, .admin-header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.admin-header small {
+    display: block;
+}
+
+.admin-header form {
+    margin: 0;
+}
+
+.admin-header button {
+    padding: 0.5rem;
+    border: 1px solid currentColor;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+}
+
+.admin-main {
+    padding-block: 3rem;
+}
+
+.admin-form label {
+    display: block;
+    margin-block: 1.2rem 0.4rem;
+}
+
+.admin-form input:not([type="hidden"]), .admin-form select, .admin-form textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background: var(--page-background);
+    font: inherit;
+}
+
+.admin-form textarea {
+    resize: vertical;
+}
+
+.admin-form .button {
+    margin-block: 1.2rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.auth-form {
+    max-width: 580px;
+}
+
+.editor-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 2rem;
+}
+
+/***************************************************************
+Tableau des textes et import
+***************************************************************/
+.admin-table-wrap {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table caption {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.admin-table td, .admin-table th {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.docx-drop {
+    margin-block: 2rem;
+    padding: 1.5rem;
+    border: 2px dashed var(--accent-color);
+}
+
+.docx-drop.is-dragging {
+    background: var(--button-background);
+}
+
+.save-status {
+    padding: 1rem;
+    background: var(--panel-background);
+}
+
+/***************************************************************
+Éditeur et prévisualisation
+***************************************************************/
+.editor-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--panel-background);
+}
+
+.editor-toolbar button {
+    min-height: 42px;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background: var(--page-background);
+    font: inherit;
+    cursor: pointer;
+}
+
+.editor-content {
+    min-height: 400px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.editor-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.editor-preview {
+    max-width: 780px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.admin-header :focus-visible {
+    outline-color: var(--page-background);
+}
+
+@media (max-width: 700px) {
+    .editor-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-content, .editor-preview {
+        padding: 1rem;
+    }
+}
+
+/***************************************************************
+Image associée : aperçu privé dans l’éditeur uniquement
+***************************************************************/
+.editor-image {
+    margin-block: 2rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+}
+
+.editor-image-preview {
+    max-width: min(100%, 360px);
+    max-height: 240px;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+
+.editor-image input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    min-height: auto;
+    margin-right: 0.5rem;
+}

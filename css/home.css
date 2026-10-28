@@ -1,0 +1,255 @@
+/***************************************************************
+Hero photographique : bureau, livres et tasse de la maquette.
+***************************************************************/
+.home-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: 490px;
+    color: var(--page-background);
+}
+
+.hero-image {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+}
+
+.home-hero::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: var(--hero-shade);
+    content: '';
+}
+
+.hero-content {
+    padding-block: 4rem;
+}
+
+.home-hero h1 {
+    max-width: 720px;
+}
+
+.hero-intro {
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+/***************************************************************
+Aperçus des écrits
+***************************************************************/
+.publication-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.publication-card {
+    display: grid;
+    grid-template-columns: 0.9fr 1fr;
+    align-items: start;
+    gap: 1.2rem;
+}
+
+.publication-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.publication-card .eyebrow {
+    margin-bottom: 0.7rem;
+    font-size: 0.62rem;
+}
+
+.publication-card h3 {
+    font-size: 1.3rem;
+}
+
+.publication-card p:not(.eyebrow) {
+    color: var(--muted-color);
+    font-size: 0.93rem;
+    line-height: 1.5;
+}
+
+/***************************************************************
+Le rendez-vous éphémère
+***************************************************************/
+.season-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: 2.8rem;
+    color: var(--page-background);
+    background: var(--accent-color);
+}
+
+.season-image {
+    position: absolute;
+    z-index: -2;
+    inset: 0 0 0 auto;
+    width: 62%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+}
+
+.season-section::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: var(--season-shade);
+    content: '';
+}
+
+.season-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    gap: 4rem;
+}
+
+.season-section h2 {
+    font-size: clamp(1.9rem, 2.8vw, 2.8rem);
+}
+
+.season-bottom {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+}
+
+.calendar-preview {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.calendar-tile {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 74px;
+    height: 98px;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background: var(--button-background);
+    font-size: 1.7rem;
+}
+
+.calendar-tile img {
+    width: 45px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.guest-preview {
+    padding-left: 2.5rem;
+    border-left: 1px solid var(--button-background);
+}
+
+.guest-preview > p:not(.eyebrow) {
+    font-size: 1.6rem;
+    line-height: 1.3;
+}
+
+/***************************************************************
+Présentation sans portrait et contact
+***************************************************************/
+.home-about {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 4rem;
+    padding-left: clamp(120px, 14vw, 200px);
+}
+
+.about-branch {
+    position: absolute;
+    inset: auto auto 0 -3rem;
+    width: clamp(150px, 17vw, 240px);
+    height: 100%;
+    max-height: 360px;
+    object-fit: contain;
+    object-position: left bottom;
+    pointer-events: none;
+}
+
+.about-copy p:not(.eyebrow) {
+    max-width: 700px;
+    color: var(--muted-color);
+}
+
+.home-about .contact-panel {
+    align-self: center;
+}
+
+/***************************************************************
+Adaptations responsive
+***************************************************************/
+@media (max-width: 1200px) {
+    .publication-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .home-hero {
+        min-height: 480px;
+    }
+
+    .hero-content {
+        padding-block: 3rem;
+    }
+
+    .hero-intro {
+        font-size: 1.1rem;
+    }
+
+    .publication-grid, .season-layout, .home-about {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .publication-card {
+        grid-template-columns: 110px 1fr;
+        gap: 1.5rem;
+    }
+
+    .publication-card img {
+        height: 210px;
+    }
+
+    .guest-preview {
+        padding-top: 1.5rem;
+        padding-left: 0;
+        border-top: 1px solid var(--button-background);
+        border-left: 0;
+    }
+
+    .calendar-tile {
+        width: 58px;
+        height: 88px;
+    }
+
+    .season-image {
+        width: 100%;
+        opacity: 0.28;
+    }
+
+    .home-about {
+        padding-left: 0;
+    }
+
+    .about-branch {
+        display: none;
+    }
+}

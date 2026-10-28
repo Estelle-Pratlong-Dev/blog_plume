@@ -1,0 +1,140 @@
+/***************************************************************
+Lecture et pages éditoriales
+***************************************************************/
+.reading-layout {
+    width: min(780px, calc(100% - 2.5rem));
+    margin-inline: auto;
+    padding-block: 4rem;
+}
+
+.reading-heading {
+    margin-bottom: 2.5rem;
+}
+
+.reading-heading .eyebrow {
+    color: var(--accent-color);
+}
+
+.prose {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.prose p {
+    margin-bottom: 1.5rem;
+}
+
+.prose h2 {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+}
+
+.author-signature {
+    font-family: var(--font-signature);
+    font-size: 3rem;
+    font-style: italic;
+}
+
+.legal-details dt {
+    font-weight: 700;
+}
+
+.legal-details dd {
+    margin: 0 0 1rem;
+}
+
+/***************************************************************
+Confort de lecture : réglage propre aux œuvres, sans réduire la taille sur mobile
+***************************************************************/
+.reading-text {
+    font-size: calc(1.25rem * var(--reading-scale, 1));
+}
+
+.reading-text h2 {
+    font-size: 1.5em;
+}
+
+.reading-text h3 {
+    font-size: 1.25em;
+}
+
+.reading-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.125rem;
+    margin: -0.75rem 0 0.75rem;
+}
+
+.reading-size-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    color: var(--text-color);
+    background: transparent;
+    cursor: pointer;
+}
+
+.reading-size-button:hover:not(:disabled) {
+    color: var(--accent-color);
+}
+
+.reading-size-button:disabled {
+    color: var(--muted-color);
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* Annonce de la taille aux lecteurs d’écran, sans compteur visible. */
+.reading-size-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/***************************************************************
+Lecture sur mobile
+***************************************************************/
+@media (max-width: 700px) {
+    .reading-layout {
+        padding-block: 2.5rem;
+    }
+}
+
+/***************************************************************
+Dissuasion de la copie : ne remplace pas une protection juridique.
+***************************************************************/
+.protected-text {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.reading-rights {
+    margin-top: 2rem;
+    color: var(--muted-color);
+    font-size: 0.85rem;
+}
+
+/***************************************************************
+Illustration d’ouverture : composition éditoriale, sans gêner la lecture
+***************************************************************/
+.story-illustration {
+    margin: 0 0 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.story-illustration img {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: cover;
+    object-position: center;
+}

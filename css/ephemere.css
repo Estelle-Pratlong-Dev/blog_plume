@@ -1,0 +1,102 @@
+/***************************************************************
+Calendrier de lecture : liens actifs uniquement pour les textes présents.
+***************************************************************/
+.advent-calendar {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.advent-calendar li > a, .advent-pending {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 165px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    background: var(--button-background);
+    text-decoration: none;
+}
+
+/* La couleur dépend exclusivement de la date, jamais de la présence d’un texte. */
+.advent-calendar li > a, .advent-pending {
+    color: var(--text-color);
+}
+
+.advent-calendar li > a:hover {
+    border-color: var(--accent-color);
+}
+
+.advent-calendar li > a:hover small {
+    text-decoration: underline;
+}
+
+.advent-future .advent-pending {
+    color: var(--muted-color);
+    background: var(--panel-background);
+}
+
+.advent-future .advent-motif {
+    opacity: 0.55;
+}
+
+.advent-calendar span > span, .advent-calendar a > span {
+    font-size: 2.2rem;
+}
+
+.advent-motif {
+    width: 52px;
+    height: 42px;
+    margin-block: 0.3rem;
+    object-fit: contain;
+}
+
+.advent-calendar small {
+    font-size: 0.8rem;
+}
+
+.guest-panel {
+    max-width: 900px;
+}
+
+/***************************************************************
+Petits écrans
+***************************************************************/
+@media (max-width: 700px) {
+    .advent-calendar {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.7rem;
+    }
+
+    .advent-calendar li > a, .advent-pending {
+        min-height: 110px;
+    }
+}
+
+/***************************************************************
+Sélection illustrée des histoires déjà accessibles
+***************************************************************/
+.advent-library .reading-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.advent-library .reading-card h2 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+    .advent-library .reading-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .advent-library .reading-list {
+        grid-template-columns: 1fr;
+    }
+}

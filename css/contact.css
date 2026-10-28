@@ -1,0 +1,102 @@
+/***************************************************************
+Correspondance : présentation et formulaire mailto
+***************************************************************/
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    align-items: start;
+    gap: 4rem;
+}
+
+.contact-introduction h2 {
+    font-size: 2rem;
+}
+
+.contact-introduction a {
+    overflow-wrap: anywhere;
+}
+
+.contact-form {
+    padding: 2rem;
+    background: var(--panel-background);
+}
+
+.contact-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.contact-form label span {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+}
+
+.contact-form input, .contact-form select, .contact-form textarea {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    margin-bottom: 1.4rem;
+    padding: 0.7rem;
+    border: 1px solid var(--muted-color);
+    color: var(--text-color);
+    background: var(--page-background);
+    font: inherit;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    font: inherit;
+    cursor: pointer;
+}
+
+.contact-form button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.contact-help {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+}
+
+.contact-privacy {
+    margin-top: 1.5rem;
+}
+
+.contact-status {
+    margin-top: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.contact-status:empty {
+    display: none;
+}
+
+/***************************************************************
+Petits écrans
+***************************************************************/
+@media (max-width: 800px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 1.25rem;
+    }
+
+    .contact-fields {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
