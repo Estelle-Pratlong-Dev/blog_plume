@@ -1,0 +1,159 @@
+/***************************************************************
+Présentation du rendez-vous et avertissement de lecture
+***************************************************************/
+.month-heading {
+    font-size: clamp(1.9rem, 4.2vw, 3.5rem);
+}
+
+@media (max-width: 650px) {
+    .month-heading br {
+        display: none;
+    }
+}
+
+.calendar-month {
+    text-align: center;
+    margin-bottom: 0.6rem;
+    color: var(--accent-color);
+    font-size: 1.65rem;
+}
+
+#titre-avent {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 3.7vw, 2.8rem);
+}
+
+.calendar-warning {
+    max-width: 950px;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--accent-color);
+    background: var(--panel-background);
+}
+
+/***************************************************************
+25 dates, cinq par ligne ; la couleur dépend de la date
+***************************************************************/
+.advent-calendar {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.advent-calendar li > a, .advent-pending {
+    display: flex;
+    height: 100%;
+    min-height: 245px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.4rem;
+    padding: 1.25rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.7rem;
+    color: var(--text-color);
+    background: var(--footer-background);
+    text-align: center;
+    text-decoration: none;
+}
+
+.advent-future .advent-pending {
+    background: var(--calendar-future-background);
+}
+
+.advent-closed .advent-pending {
+    background: var(--panel-background);
+}
+
+.advent-calendar li > a:hover {
+    border-color: var(--accent-color);
+}
+
+.advent-calendar li > a:hover .advent-title {
+    font-family: var(--font-stories);
+    display: grid;
+    flex: 1;
+    align-content: center;
+    text-decoration: underline;
+}
+
+.advent-day {
+    font-size: 2.1rem;
+    line-height: 1.2;
+}
+
+.advent-motif {
+    width: 100px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.advent-title {
+    font-family: var(--font-stories);
+    display: grid;
+    flex: 1;
+    align-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.advent-calendar small {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/***************************************************************
+Tablette et téléphone : conserver des cases lisibles
+***************************************************************/
+@media (max-width: 950px) {
+    .advent-calendar {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .advent-calendar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+    }
+
+    .advent-calendar li > a, .advent-pending {
+        padding: 1rem 0.65rem;
+    }
+
+    .page-intro .intro-text br {
+        display: none;
+    }
+}
+
+
+/***************************************************************
+Invitation à écrire sous le calendrier
+***************************************************************/
+.christmas-invitation {
+    margin-top: 2rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid var(--border-color);
+    border-radius: 0.7rem;
+    background: var(--button-background);
+    text-align: center;
+}
+
+.christmas-invitation-decoration {
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+.christmas-invitation p:last-of-type {
+    margin-bottom: 0;
+}
+
+.christmas-invitation .text-link {
+    margin-top: 1rem;
+}
+

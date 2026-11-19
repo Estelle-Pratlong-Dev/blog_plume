@@ -1,0 +1,26 @@
+# Données privées et images déposées
+/storage/*
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Journaux et fichiers temporaires
+*.log
+*.tmp
+*.bak
+*~
+Thumbs.db
+.DS_Store
+
+# Réglages personnels
+/.idea/
+/.vscode/
+
+# Documentation Markdown, sauf le README
+*.md
+!README.md
+
+# Configuration propre au site et coordonnées de contact
+/config/site.php

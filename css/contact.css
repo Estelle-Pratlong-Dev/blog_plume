@@ -1,0 +1,167 @@
+/***************************************************************
+Correspondance : présentation et formulaire
+***************************************************************/
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    align-items: start;
+    gap: 4rem;
+}
+
+.contact-introduction h2 {
+    font-size: 2rem;
+}
+
+.contact-introduction a {
+    overflow-wrap: anywhere;
+}
+
+.contact-form {
+    padding: 2rem;
+    background: var(--panel-background);
+}
+
+.contact-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.contact-form label span {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+}
+
+.contact-form input, .contact-form select, .contact-form textarea {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    margin-bottom: 1.4rem;
+    padding: 0.7rem;
+    border: 1px solid var(--muted-color);
+    color: var(--text-color);
+    background: var(--page-background);
+    font: inherit;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    font: inherit;
+    cursor: pointer;
+}
+
+.contact-form button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.contact-help {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+}
+
+.contact-privacy {
+    margin-top: 1.5rem;
+}
+
+/***************************************************************
+Confirmation et erreurs du formulaire
+***************************************************************/
+.contact-confirmation {
+    margin-bottom: 2rem;
+    padding: 1.25rem clamp(1rem, 4vw, 2rem);
+    border: 1px solid var(--accent-color);
+    border-left-width: 0.4rem;
+    background: var(--page-background);
+    scroll-margin-top: 1.5rem;
+}
+
+.contact-confirmation h2 {
+    margin: 0 0 0.5rem;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.contact-confirmation p {
+    margin: 0.4rem 0 0;
+}
+
+.contact-status {
+    margin: 0 0 1.25rem;
+    padding: 0.85rem 1rem;
+    border-left: 0.3rem solid var(--muted-color);
+    background: var(--calendar-future-background);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/***************************************************************
+Proposition de texte et autorisation de publication
+***************************************************************/
+.contact-form .contact-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-block: 1.5rem;
+}
+
+.contact-form .contact-consent[hidden] {
+    display: none;
+}
+
+.contact-form .contact-consent input {
+    flex: 0 0 auto;
+    width: 1.15rem;
+    min-height: 0;
+    height: 1.15rem;
+    margin: 0.2rem 0 0;
+    padding: 0;
+    accent-color: var(--accent-color);
+}
+
+.contact-form .contact-consent span {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.contact-noel-motif {
+    float: right;
+    margin: 0 0 0.5rem 1rem;
+    object-fit: contain;
+}
+
+.contact-noel-rules:not([hidden]) {
+    display: flow-root;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-left: 3px solid var(--accent-color);
+    background: var(--page-background);
+}
+
+/***************************************************************
+Petits écrans
+***************************************************************/
+@media (max-width: 800px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 1.25rem;
+    }
+
+    .contact-fields {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

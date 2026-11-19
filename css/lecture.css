@@ -1,0 +1,223 @@
+/***************************************************************
+Lecture et pages éditoriales
+***************************************************************/
+.reading-layout {
+    width: min(780px, calc(100% - 2.5rem));
+    margin-inline: auto;
+    padding-block: 4rem;
+}
+
+.reading-heading {
+    margin-bottom: 2.5rem;
+}
+
+.reading-heading h1 {
+    text-align: left;
+    text-wrap: wrap;
+}
+
+.reading-heading--microfiction h1 {
+    font-size: clamp(1.85rem, 4.4vw, 3.2rem);
+}
+
+.reading-heading--avent h1 {
+    text-align: center;
+    font-family: var(--font-stories);
+    font-size: clamp(2rem, 4.6vw, 3.6rem);
+}
+
+.reading-heading .eyebrow {
+    color: var(--accent-color);
+}
+
+.prose {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.prose p {
+    margin-bottom: 1.5rem;
+}
+
+.prose h2 {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+}
+
+.author-signature {
+    font-family: var(--font-signature);
+    font-size: 3rem;
+    font-style: normal;
+}
+
+.legal-details dt {
+    font-weight: 700;
+}
+
+.legal-details dd {
+    margin: 0 0 1rem;
+}
+
+/***************************************************************
+Confort de lecture : réglage propre aux œuvres, sans réduire la taille sur mobile
+***************************************************************/
+.reading-text {
+    text-align: justify;
+    hyphens: auto;
+    font-size: calc(1.25rem * var(--reading-scale, 1));
+}
+
+/* Aligner les dialogues sur le corps de texte, même si Word fournit un retrait. */
+.reading-text .dialogue-list, .reading-text--avent ul {
+    padding-inline: 0;
+}
+
+.reading-text .dialogue-list > li, .reading-text--avent ul > li {
+    margin-inline: 0 !important;
+    text-indent: 0 !important;
+}
+
+/* Les listes sans numéros des récits de l’Avent représentent les répliques. */
+.reading-text--avent ul {
+    list-style: none;
+}
+
+.reading-text--avent ul:not(.dialogue-list) > li::before {
+    content: '-\00a0';
+}
+
+/* Espacement compact, proportionnel à la taille de lecture choisie. */
+.reading-text p {
+    margin-bottom: 0.5em;
+}
+
+/* Les paragraphes vides sont de petites séparations, pas des lignes complètes. */
+.reading-text p.reading-gap {
+    height: 0.35em;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+.reading-text--monthly {
+    text-align: left;
+    line-height: 1.55;
+}
+
+.reading-text--monthly p {
+    margin-bottom: 0.4em;
+}
+
+.reading-text--monthly .reading-gap + .reading-gap {
+    display: none;
+}
+
+.reading-text--monthly .story-illustration {
+    margin: 1rem 0 1.5rem;
+    padding: 0;
+    border: 0;
+}
+
+.reading-text--monthly .story-illustration img {
+    display: block;
+    width: min(100%, 19rem);
+    height: auto;
+    margin: 0;
+}
+
+.reading-text h2 {
+    font-size: 1.5em;
+}
+
+.reading-text h3 {
+    font-size: 1.25em;
+}
+
+.reading-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.125rem;
+    margin: -0.75rem 0 0.75rem;
+}
+
+.reading-size-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    color: var(--text-color);
+    background: transparent;
+    cursor: pointer;
+}
+
+.reading-size-button:hover:not(:disabled) {
+    color: var(--accent-color);
+}
+
+.reading-size-button:disabled {
+    color: var(--muted-color);
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* Annonce de la taille aux lecteurs d’écran, sans compteur visible. */
+.reading-size-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/***************************************************************
+Lecture sur mobile
+***************************************************************/
+@media (max-width: 700px) {
+    .reading-layout {
+        padding-block: 2.5rem;
+    }
+}
+
+/***************************************************************
+Dissuasion de la copie : ne remplace pas une protection juridique.
+***************************************************************/
+.protected-text {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.reading-rights {
+    margin-top: 2rem;
+    color: var(--muted-color);
+    font-size: 0.85rem;
+}
+
+/***************************************************************
+Illustration d’ouverture : composition éditoriale, sans gêner la lecture
+***************************************************************/
+.story-illustration {
+    margin: 0 0 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.story-illustration img {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Un visuel d’inspiration fourni dans Word reste visible en entier. */
+.story-illustration--reference img {
+    width: auto;
+    max-width: 100%;
+    margin-inline: auto;
+    object-fit: contain;
+}

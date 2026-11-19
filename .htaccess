@@ -1,0 +1,19 @@
+# Les originaux, les données et la configuration ne sont jamais publics.
+Options -Indexes
+DirectoryIndex index.php
+ErrorDocument 404 /blog_plume/pages/obligatoires/404.php
+
+<FilesMatch "^(AGENTS\.md|GUIDE-DEVELOPPEMENT\.md|README\.md|LICENSE|.*\.(docx|zip|sqlite|sqlite3|db))$">
+    Require all denied
+</FilesMatch>
+
+RewriteEngine On
+RewriteBase /blog_plume/
+RewriteRule ^(?:config|includes|data|storage|tools|__MACOSX|Estelle|PHOTOS[^/]*|TEXTES[^/]*)(?:/|$) - [F,L,NC]
+
+# Composants internes de l’administration : jamais de point d’entrée HTTP.
+RewriteRule ^admin/(?:[^/]+/)*_[^/]*(?:/|$) - [F,L,NC]
+
+# Compatibilité des anciens liens, requêtes conservées par Apache.
+RewriteRule ^(ephemere|microfictions|nouvelles|feuilleton|romans|contact|a-propos|lecture)\.php$ pages/$1.php [R=301,L]
+RewriteRule ^(mentions-legales|confidentialite|404)\.php$ pages/obligatoires/$1.php [R=301,L]

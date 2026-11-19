@@ -1,0 +1,54 @@
+/***************************************************************
+Cartes de rubrique : trois colonnes, puis deux et une
+***************************************************************/
+.lecture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.lecture-tile {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--footer-background);
+    border-radius: 1rem;
+    background: var(--panel-background);
+}
+
+.lecture-tile-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.lecture-tile h2 {
+    margin-bottom: 1rem;
+    font-size: 1.65rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.lecture-tile .text-link {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+@media (max-width: 1000px) {
+    .lecture-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .lecture-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.archives-intro {
+    max-width: none;
+}
