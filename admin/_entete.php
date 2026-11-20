@@ -11,6 +11,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title><?= e($adminTitle) ?> — Administration</title>
     <link rel="icon" href="<?= e(url('img/identite/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= e(url('img/identite/apple-touch-icon.png')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/styles.css') . '?v=' . filemtime(__DIR__ . '/../css/styles.css')) ?>">
     <?php if (!empty($editorScript)): ?>
         <link rel="stylesheet" href="<?= e(url('css/lecture.css') . '?v=' . filemtime(__DIR__ . '/../css/lecture.css')) ?>">

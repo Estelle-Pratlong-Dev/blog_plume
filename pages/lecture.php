@@ -62,6 +62,7 @@ $hasImageSlot = $isMonthlyPage && str_contains($readingHtml, $imageSlot);
         <link rel="canonical" href="<?= e(rtrim($site['public_url'], '/') . '/pages/lecture.php?texte=' . rawurlencode($slug)) ?>">
     <?php endif; ?>
     <link rel="icon" href="<?= e(url('img/identite/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= e(url('img/identite/apple-touch-icon.png')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/styles.css') . '?v=' . filemtime(__DIR__ . '/../css/styles.css')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/lecture.css') . '?v=' . filemtime(__DIR__ . '/../css/lecture.css')) ?>">
 </head>

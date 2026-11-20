@@ -1,2 +1,10 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /admin/
+Disallow: /config/
+Disallow: /data/
+Disallow: /includes/
+Disallow: /storage/
+Disallow: /tools/
+
+Sitemap: https://plumetcolegram.com/sitemap.php

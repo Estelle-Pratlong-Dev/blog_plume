@@ -19,6 +19,7 @@ $textes = classement_lectures($textes, $site['nouvelles_visibles'])['nouvelles']
         <link rel="canonical" href="<?= e(rtrim($site['public_url'], '/') . '/pages/nouvelles.php') ?>">
     <?php endif; ?>
     <link rel="icon" href="<?= e(url('img/identite/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= e(url('img/identite/apple-touch-icon.png')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/styles.css') . '?v=' . filemtime(__DIR__ . '/../css/styles.css')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/cartes-lectures.css') . '?v=' . filemtime(__DIR__ . '/../css/cartes-lectures.css')) ?>">
 </head>

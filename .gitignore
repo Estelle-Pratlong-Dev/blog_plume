@@ -24,3 +24,6 @@ Thumbs.db
 
 # Configuration propre au site et coordonnées de contact
 /config/site.php
+
+# Validation Google propre au domaine en ligne
+/google*.html

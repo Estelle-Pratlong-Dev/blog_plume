@@ -12,7 +12,7 @@ return [
     'production' => false,
     'limiter_copie' => true,
     // Date éditoriale simulée en développement uniquement ; null rétablit la date réelle.
-    'date_simulee' => '2026-12-26 00:00:00',
+    'date_simulee' => null,
     // Le calendrier reste réglé sur décembre, même pendant les essais.
     'ephemere' => [
         'mode' => 'avent',

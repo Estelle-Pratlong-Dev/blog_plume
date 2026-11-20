@@ -52,6 +52,7 @@ require __DIR__ . '/../includes/contact-envoi.php';
         <link rel="canonical" href="<?= e(rtrim($site['public_url'], '/') . '/pages/contact.php') ?>">
     <?php endif; ?>
     <link rel="icon" href="<?= e(url('img/identite/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= e(url('img/identite/apple-touch-icon.png')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/styles.css') . '?v=' . filemtime(__DIR__ . '/../css/styles.css')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/contact.css') . '?v=' . filemtime(__DIR__ . '/../css/contact.css')) ?>">
 </head>

@@ -5,19 +5,32 @@ $currentPage = 'index.php';
 $now = horloge_publication($site);
 $monthlyPages = pages_mensuelles(textes_publics($site, $now));
 $monthlyPage = reset($monthlyPages);
+// Annoncer le calendrier sur l’accueil le mois précédent, si aucune page du mois ne le remplace.
+$adventStart = debut_jour_avent($site, 1);
+$showAdventPreview = calendrier_avent_en_cours($site, $now)
+    || (!$monthlyPage && $site['ephemere']['mode'] === 'avent'
+        && $now >= $adventStart->modify('-1 month') && $now < $adventStart);
 ?>
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Accueil — <?= e($site['name']) ?></title>
-    <meta name="description" content="Micro-fictions, nouvelles et romans : entrez dans les imaginaires de L . Yann.">
+    <title><?= e($site['name']) ?> — Le blog littéraire de <?= e($site['author']) ?></title>
+    <meta name="description" content="Découvrez les micro-fictions, nouvelles et romans de L . Yann. Un blog littéraire pour lire à son rythme et partager des histoires au fil des mois.">
     <meta name="robots" content="<?= $site['production'] ? 'index, follow' : 'noindex, nofollow' ?>">
     <?php if ($site['public_url'] !== ''): ?>
         <link rel="canonical" href="<?= e(rtrim($site['public_url'], '/') . '/') ?>">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="fr_FR">
+        <meta property="og:title" content="<?= e($site['name']) ?> — Le blog littéraire de <?= e($site['author']) ?>">
+        <meta property="og:description" content="Découvrez les micro-fictions, nouvelles et romans de L . Yann. Un blog littéraire pour lire à son rythme et partager des histoires au fil des mois.">
+        <meta property="og:url" content="<?= e(rtrim($site['public_url'], '/') . '/') ?>">
+        <meta property="og:image" content="<?= e(rtrim($site['public_url'], '/') . '/img/ambiance/bureau-printemps.jpg') ?>">
+        <meta property="og:image:alt" content="Livres et tasse devant une fenêtre ouverte sur un paysage printanier">
     <?php endif; ?>
     <link rel="icon" href="<?= e(url('img/identite/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= e(url('img/identite/apple-touch-icon.png')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/styles.css') . '?v=' . filemtime(__DIR__ . '/../css/styles.css')) ?>">
     <link rel="stylesheet" href="<?= e(url('css/home.css') . '?v=' . filemtime(__DIR__ . '/../css/home.css')) ?>">
 </head>
@@ -26,7 +39,10 @@ $monthlyPage = reset($monthlyPages);
     <main id="contenu">
         <!-- ================================ HERO ================================ -->
         <section class="home-hero" aria-labelledby="titre-accueil">
-            <img class="hero-image" src="<?= e(url('img/ambiance/bureau-printemps.jpg')) ?>" width="1800" height="600" alt="" fetchpriority="high">
+            <picture>
+                <source srcset="<?= e(url('img/ambiance/bureau-printemps.webp')) ?>" type="image/webp">
+                <img class="hero-image" src="<?= e(url('img/ambiance/bureau-printemps.jpg')) ?>" width="1800" height="600" alt="" fetchpriority="high">
+            </picture>
             <div class="container hero-content">
                 <p class="eyebrow">Des histoires à lire au fil des saisons</p>
                 <h1 id="titre-accueil">Des histoires brèves aux romans,<br>un espace pour lire, rêver<br>et prendre le temps.</h1>
@@ -54,10 +70,13 @@ $monthlyPage = reset($monthlyPages);
                 <!-- ========================== DE MOI EN MOIS ========================== -->
                 <section class="home-month" aria-labelledby="titre-mois">
                     <h2 id="titre-mois">De moi en mois</h2>
-                    <?php if (calendrier_avent_en_cours($site, $now)): ?>
+                    <?php if ($showAdventPreview): ?>
                     <p class="month-date">Décembre <?= $now->format('Y') ?></p>
                     <div class="month-visual">
-                        <img src="<?= e(url('img/ambiance/lanterne-avent.jpg')) ?>" width="1200" height="800" alt="Une lanterne allumée et des livres pour accompagner les histoires de Noël" loading="lazy">
+                        <picture>
+                            <source srcset="<?= e(url('img/ambiance/lanterne-avent.webp')) ?>" type="image/webp">
+                            <img src="<?= e(url('img/ambiance/lanterne-avent.jpg')) ?>" width="1200" height="800" alt="Une lanterne allumée et des livres pour accompagner les histoires de Noël" loading="lazy">
+                        </picture>
                         <h3>Des histoires pour attendre Noël</h3>
                     </div>
                     <div class="month-introduction">
@@ -80,21 +99,30 @@ $monthlyPage = reset($monthlyPages);
                         <article class="publication-card">
                             <h3><a href="<?= e(url('pages/microfictions.php')) ?>">Micro-fictions</a></h3>
                             <a class="publication-image" href="<?= e(url('pages/microfictions.php')) ?>" aria-label="Découvrir les micro-fictions">
-                                <img src="<?= e(url('img/ambiance/bruyere-cevennes.jpg')) ?>" width="1200" height="540" alt="Bruyère en fleurs roses et violettes parmi les branches" loading="lazy">
+                                <picture>
+                                    <source srcset="<?= e(url('img/ambiance/bruyere-cevennes.webp')) ?>" type="image/webp">
+                                    <img src="<?= e(url('img/ambiance/bruyere-cevennes.jpg')) ?>" width="1200" height="540" alt="Bruyère en fleurs roses et violettes parmi les branches" loading="lazy">
+                                </picture>
                             </a>
                             <p>Un petit creux pour lire dans votre emploi du temps : des histoires brèves à parcourir en quelques minutes.</p>
                         </article>
                         <article class="publication-card">
                             <h3><a href="<?= e(url('pages/nouvelles.php')) ?>">Nouvelles</a></h3>
                             <a class="publication-image" href="<?= e(url('pages/nouvelles.php')) ?>" aria-label="Découvrir les nouvelles">
-                                <img src="<?= e(url('img/ambiance/courge-mur-de-pierre.jpg')) ?>" width="1200" height="540" alt="Courge orange et fleurs jaunes devant un mur de pierres" loading="lazy">
+                                <picture>
+                                    <source srcset="<?= e(url('img/ambiance/courge-mur-de-pierre.webp')) ?>" type="image/webp">
+                                    <img src="<?= e(url('img/ambiance/courge-mur-de-pierre.jpg')) ?>" width="1200" height="540" alt="Courge orange et fleurs jaunes devant un mur de pierres" loading="lazy">
+                                </picture>
                             </a>
                             <p>Un peu plus de temps pour lire : des récits plus longs, aventure, science-fiction, chapitres de vie, polar, etc.</p>
                         </article>
                         <article class="publication-card">
                             <h3><a href="<?= e(url('pages/romans.php')) ?>">Romans</a></h3>
                             <a class="publication-image" href="<?= e(url('pages/romans.php')) ?>" aria-label="Découvrir les romans">
-                                <img src="<?= e(url('img/ambiance/bois-gouttes-cevennes.jpg')) ?>" width="1200" height="540" alt="Gouttes translucides suspendues sous une tranche de bois" loading="lazy">
+                                <picture>
+                                    <source srcset="<?= e(url('img/ambiance/bois-gouttes-cevennes.webp')) ?>" type="image/webp">
+                                    <img src="<?= e(url('img/ambiance/bois-gouttes-cevennes.jpg')) ?>" width="1200" height="540" alt="Gouttes translucides suspendues sous une tranche de bois" loading="lazy">
+                                </picture>
                             </a>
                             <p>Déclinés sous forme feuilletonnée : thrillers, romans pas si noirs que ça,<br>et bien d’autres genres.</p>
                         </article>

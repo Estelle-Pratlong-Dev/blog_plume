@@ -42,10 +42,19 @@ function recevoir_image_texte(array $file, string $description): array
 
 function supprimer_image_texte(?array $image): void
 {
-    if ($image !== null && is_string($image['fichier'] ?? null)) {
+    if ($image === null || !is_string($image['fichier'] ?? null)) {
+        return;
+    }
+    // Une illustration peut être partagée par plusieurs jours ou textes.
+    depot_operation(static function (array &$state) use ($image): void {
+        foreach ($state['textes'] as $text) {
+            if (($text['image']['fichier'] ?? null) === $image['fichier']) {
+                return;
+            }
+        }
         $filename = chemin_image_texte($image['fichier']);
         if (is_file($filename)) {
             unlink($filename);
         }
-    }
+    });
 }

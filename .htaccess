@@ -1,14 +1,26 @@
 # Les originaux, les données et la configuration ne sont jamais publics.
 Options -Indexes
 DirectoryIndex index.php
-ErrorDocument 404 /blog_plume/pages/obligatoires/404.php
 
-<FilesMatch "^(AGENTS\.md|GUIDE-DEVELOPPEMENT\.md|README\.md|LICENSE|.*\.(docx|zip|sqlite|sqlite3|db))$">
+
+<FilesMatch "^(AGENTS\.md|GUIDE-DEVELOPPEMENT\.md|README\.md|LICENSE|.*\.(md|log|bak|tmp|ini|docx|zip|sqlite|sqlite3|db))$">
     Require all denied
 </FilesMatch>
 
 RewriteEngine On
-RewriteBase /blog_plume/
+
+# Adresse unique du domaine définitif.
+RewriteCond %{HTTP_HOST} ^www\.plumetcolegram\.com(?::[0-9]+)?$ [NC]
+RewriteRule ^ https://plumetcolegram.com%{REQUEST_URI} [R=308,L,NE]
+
+# HTTPS sur les hébergements, HTTP autorisé pour les adresses de développement local.
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1|\[::1\]|[a-z0-9_.-]+\.test)(:[0-9]+)?$ [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=308,L,NE]
+
+# Fichiers de travail, configuration Git et sauvegardes hors accès public.
+RewriteRule (^|/)(\.git|\.env[^/]*)(/|$) - [F,L,NC]
+
 RewriteRule ^(?:config|includes|data|storage|tools|__MACOSX|Estelle|PHOTOS[^/]*|TEXTES[^/]*)(?:/|$) - [F,L,NC]
 
 # Composants internes de l’administration : jamais de point d’entrée HTTP.
@@ -17,3 +29,8 @@ RewriteRule ^admin/(?:[^/]+/)*_[^/]*(?:/|$) - [F,L,NC]
 # Compatibilité des anciens liens, requêtes conservées par Apache.
 RewriteRule ^(ephemere|microfictions|nouvelles|feuilleton|romans|contact|a-propos|lecture)\.php$ pages/$1.php [R=301,L]
 RewriteRule ^(mentions-legales|confidentialite|404)\.php$ pages/obligatoires/$1.php [R=301,L]
+
+# Page 404 interne, compatible avec un site à la racine ou dans un sous-dossier.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ pages/obligatoires/404.php [END]
